@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA Volunteer Portfolio - Saidmukhammad Isokov</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* FIA Color Scheme */
+            --fia-red: #E10600;
+            --fia-black: #000000;
+            --fia-white: #FFFFFF;
+            --fia-gray: #333333;
+            --light-gray: #F5F5F5;
+            --border-gray: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--fia-gray);
+            background-color: var(--fia-white);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: var(--fia-white);
+            padding: 8px 15px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--fia-gray);
+            transition: all 0.3s;
+            border-radius: 15px;
+        }
+
+        .lang-btn.active {
+            background: var(--fia-red);
+            color: var(--fia-white);
+        }
+
+        .lang-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--fia-black) 0%, var(--fia-gray) 100%);
+            color: var(--fia-white);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Photo placeholder - Replace with your 1:1 portrait */
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--fia-red);
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--fia-gray);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--fia-red);
+            font-weight: 600;
+        }
+
+        /* Download CV Button */
+        .download-cv {
+            background: var(--fia-red);
+            color: var(--fia-white);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .download-cv:hover {
+            background: #C10500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(225, 6, 0, 0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: var(--fia-black);
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--fia-red);
+            display: inline-block;
+        }
+
+        h3 {
+            color: var(--fia-red);
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .period {
+            color: var(--fia-gray);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Info */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--fia-red);
+        }
+
+        .contact-item strong {
+            color: var(--fia-red);
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--fia-gray);
+        }
+
+        /* Experience Card */
+        .experience-card {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--fia-red);
+        }
+
+        .experience-card ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .experience-card li {
+            margin-bottom: 10px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid var(--fia-red);
+        }
+
+        .skill-category h4 {
+            color: var(--fia-black);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 500px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fia-gray);
+            font-size: 14px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: var(--fia-white);
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--fia-red);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--border-gray);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--fia-red);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* GitHub Link */
+        .github-link {
+            display: inline-block;
+            background: var(--fia-black);
+            color: var(--fia-white);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .github-link:hover {
+            background: var(--fia-red);
+            transform: translateY(-2px);
+        }
+
+        /* Motivation Box */
+        .motivation-box {
+            background: linear-gradient(135deg, var(--fia-red) 0%, #C10500 100%);
+            color: var(--fia-white);
+            padding: 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--fia-black);
+            color: var(--fia-white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--fia-white);
+            text-decoration: none;
+            padding: 10px 20px;
+            background: var(--fia-gray);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--fia-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-slide {
+                height: 300px;
+            }
+        }
+
+        /* Hide content for inactive language */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" onclick="switchLang('ru')">RU</button>
+    </div>
+
+    <!-- ENGLISH VERSION -->
+    <div class="lang-content active" id="en">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <!-- REPLACE THIS DIV WITH YOUR PHOTO: <img src="your-photo.jpg" alt="Saidmukhammad Isokov" class="profile-photo"> -->
+                <div class="profile-photo">
+                    <img src="img/studio_close-up_portrait_of_a_stylish_man_in_elegant_white_tuxedoblack_buttons_and_black_bow_and_sho_a95c9f64-0639-4700-822e-b6eac49ac062.png" alt=""
+                    class="profile-photo">
+                </div>
+                <div>
+                    <h1>Saidmukhammad Isokov</h1>
+                    <p class="subtitle">FIA Volunteer Candidate | Event Organizer | Web Developer</p>
+                    <!-- REPLACE # with your CV file link -->
+                    <a href="assets/Isakov'sCV-en.pdf" download class="download-cv">📄 Download CV</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Contact Information -->
+            <section id="contact">
+                <h2>Contact Information</h2>
+                <div class="contact-grid">
+                    <!-- REPLACE placeholders with your real contact info -->
+                    <div class="contact-item">
+                        <strong>Email:</strong> si613741@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong> +998 90 788 68 46
+                    </div>
+                    <div class="contact-item">
+                        <strong>Instagram:</strong> @said_isakovv
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong> linkedin.com/in/said-isakov
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telegram:</strong> @hesoyam211006
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me -->
+            <section id="about">
+                <h2>About Me</h2>
+                <p class="about-text">
+                    I am Saidmukhammad Isokov — an event organizer, web developer, and sports enthusiast from Tashkent. I work in the Students' Union of my university, where I organize large-scale projects between eight universities and manage communication, coordination, and logistics.
+                </p>
+                <p class="about-text">
+                    In addition to university-level events, I also served as an organizer of FSMUN (Model United Nations) held at School No. 5, where I coordinated participants, prepared event materials, and ensured the smooth execution of all sessions. This experience strengthened my leadership, public communication, and event management skills.
+                </p>
+                <p class="about-text">
+                    I also work with digital technologies: website development, AI tools, social media promotion, and automation. My goal is to contribute to FIA events in Tashkent and gain valuable international sports event experience.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <h2>Experience in Event Management</h2>
+                <div class="experience-card">
+                    <h3>Students' Union Organizer</h3>
+                    <p class="period">TGEU | 2024–2025</p>
+                    <ul>
+                        <li>Organized inter-university projects involving 8 universities</li>
+                        <li>Coordinated teams, schedules, and event logistics</li>
+                        <li>Communicated with participants, partners, and departments</li>
+                        <li>Presented project concepts and solved operational challenges</li>
+                        <li>Ensured smooth execution of events in dynamic environments</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Organizational & Interpersonal</h4>
+                        <ul>
+                            <li>Event coordination</li>
+                            <li>Team communication</li>
+                            <li>Problem-solving under pressure</li>
+                            <li>Task management</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Digital & Technical</h4>
+                        <ul>
+                            <li>Web development (Next.js, React)</li>
+                            <li>AI tools & automation</li>
+                            <li>Telegram/AI bot development</li>
+                            <li>Social media management</li>
+                            <li>Canva & presentation design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>General</h4>
+                        <ul>
+                            <li>Quick learning</li>
+                            <li>Responsibility & discipline</li>
+                            <li>Multitasking</li>
+                            <li>English communication skills</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio -->
+            <section id="portfolio">
+                <h2>Portfolio</h2>
+                
+                <!-- GitHub Link - REPLACE with your GitHub username -->
+                <p>Check out my web development projects:</p>
+                <a href="https://github.com/Saidmukhammad" target="_blank" class="github-link">
+                    🔗 View GitHub Profile
+                </a>
+
+                <!-- Event Photos Carousel -->
+                <h3 style="margin-top: 50px;">Event Photos</h3>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- REPLACE these placeholder images with your actual event photos -->
+                        <div class="carousel-slide">
+                            <img src="img/1.JPG" alt="Event 1"
+                            style="object-fit: contain; ">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/2.jpg" alt="Event 2" style="object-fit: contain;">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/3.jpg" alt="Event 3" style="object-fit: contain;">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/4.JPG" alt="Event 4" style="object-fit: contain;">
+
+                        </div>
+                        <!-- <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Event 5">
+                        </div> -->
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)">›</button>
+                </div>
+                <div class="carousel-indicators" id="indicators"></div>
+            </section>
+
+            <!-- Motivation -->
+            <section id="motivation">
+                <h2>Motivation for Volunteering at FIA</h2>
+                <div class="motivation-box">
+                    <p>
+                        Volunteering at FIA events is an opportunity to be part of an international sports initiative and contribute to high-quality event organization in Uzbekistan. I aim to develop my skills in sports management, teamwork, and real-time decision-making while supporting a global motorsport community.
+                    </p>
+                    <p style="margin-top: 20px;">
+                        I am disciplined, motivated, and ready to work in a dynamic, fast-paced environment.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Additional Info -->
+            <section id="additional">
+                <h2>Additional Information</h2>
+                <ul style="font-size: 1.1em; line-height: 2;">
+                    <li>✓ Available for the full event schedule</li>
+                    <li>✓ Open to any volunteer role (logistics, registration, media, guest support, coordination)</li>
+                    <li>✓ Strong interest in motorsport and sports event operations</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h3>Contact Me</h3>
+            <div class="social-links">
+                <!-- REPLACE # with your actual social media links -->
+                <a href="si613741@gmail.com">📧 Email</a>
+                <a href="https://www.instagram.com/said_isakovv/">📱 Instagram</a>
+                <a href="https://www.linkedin.com/in/said-isakov">💼 LinkedIn</a>
+                <a href="https://t.me/hesoyam211006">✈️ Telegram</a>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.7;">© 2025 Saidmukhammad Isokov | FIA Volunteer Portfolio</p>
+        </footer>
+    </div>
+
+    <!-- RUSSIAN VERSION -->
+    <div class="lang-content" id="ru">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <!-- REPLACE THIS DIV WITH YOUR PHOTO: <img src="your-photo.jpg" alt="Саидмухаммад Исоков" class="profile-photo"> -->
+                <div class="profile-photo">
+                    <img src="img/studio_close-up_portrait_of_a_stylish_man_in_elegant_white_tuxedoblack_buttons_and_black_bow_and_sho_a95c9f64-0639-4700-822e-b6eac49ac062.png" alt=""
+                    class="profile-photo">
+                </div>
+                <div>
+                    <h1>Саидмухаммад Исоков</h1>
+                    <p class="subtitle">Кандидат в волонтеры FIA | Организатор мероприятий | Веб-разработчик</p>
+                    <!-- REPLACE # with your CV file link -->
+                    <a href="assets/Isakov'sCV-en.pdf" download class="download-cv">📄 Скачать резюме</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Contact Information -->
+            <section id="contact-ru">
+                <h2>Контактная информация</h2>
+                <div class="contact-grid">
+                    <!-- REPLACE placeholders with your real contact info -->
+                    <div class="contact-item">
+                        <strong>Email:</strong> si613741@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Телефон:</strong> +998 90 788 68 46
+                    </div>
+                    <div class="contact-item">
+                        <strong>Instagram:</strong> @said_isakovv
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong> linkedin.com/in/said-isakov
+                    </div>
+                    <div class="contact-item">
+                        <strong>Telegram:</strong> @hesoyam211006
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me -->
+            <section id="about-ru">
+                <h2>О себе</h2>
+                <p class="about-text">
+                    Я — Саидмухаммад Исоков, организатор мероприятий, веб-разработчик и энтузиаст спорта из Ташкента. Работаю в Студенческом союзе университета, где организую крупномасштабные проекты между восемью университетами и управляю коммуникацией, координацией и логистикой.
+                </p>
+                <p class="about-text">
+                    Также работаю с цифровыми технологиями: разработка сайтов, AI-инструменты, продвижение в соцсетях и автоматизация. Моя цель — внести вклад в мероприятия FIA в Ташкенте и получить ценный опыт работы на международных спортивных событиях.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience-ru">
+                <h2>Опыт в организации мероприятий</h2>
+                <div class="experience-card">
+                    <h3>Организатор Студенческого союза</h3>
+                    <p class="period">ТГЭУ | 2024–2025</p>
+                    <ul>
+                        <li>Организовал межуниверситетские проекты с участием 8 университетов</li>
+                        <li>Координировал команды, расписания и логистику мероприятий</li>
+                        <li>Взаимодействовал с участниками, партнерами и отделами</li>
+                        <li>Презентовал концепции проектов и решал оперативные задачи</li>
+                        <li>Обеспечивал гладкое проведение мероприятий в динамичной среде</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills-ru">
+                <h2>Навыки</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Организационные и коммуникативные</h4>
+                        <ul>
+                            <li>Координация мероприятий</li>
+                            <li>Командная коммуникация</li>
+                            <li>Решение проблем под давлением</li>
+                            <li>Управление задачами</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Цифровые и технические</h4>
+                        <ul>
+                            <li>Веб-разработка (Next.js, React)</li>
+                            <li>AI-инструменты и автоматизация</li>
+                            <li>Разработка Telegram/AI ботов</li>
+                            <li>Управление соцсетями</li>
+                            <li>Canva и создание презентаций</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Общие</h4>
+                        <ul>
+                            <li>Быстрая обучаемость</li>
+                            <li>Ответственность и дисциплина</li>
+                            <li>Многозадачность</li>
+                            <li>Навыки общения на английском</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio -->
+            <section id="portfolio-ru">
+                <h2>Портфолио</h2>
+                
+                <!-- GitHub Link - REPLACE with your GitHub username -->
+                <p>Посмотрите мои проекты по веб-разработке:</p>
+                <a href="https://github.com/Saidmukhammad" target="_blank" class="github-link">
+                    🔗 Перейти на GitHub
+                </a>
+
+                <!-- Event Photos Carousel -->
+                <h3 style="margin-top: 50px;">Фото с мероприятий</h3>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrackRu">
+                        <!-- REPLACE these placeholder images with your actual event photos -->
+                        <div class="carousel-slide">
+                            <img src="img/1.JPG" alt="Event 1"
+                            style="object-fit: contain; ">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/2.jpg" alt="Event 2" style="object-fit: contain;">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/3.jpg" alt="Event 3" style="object-fit: contain;">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/4.JPG" alt="Event 4" style="object-fit: contain;">
+
+                        </div>
+                        <!-- <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" alt="Event 5">
+                        </div> -->
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarouselRu(-1)">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarouselRu(1)">›</button>
+                </div>
+                <div class="carousel-indicators" id="indicatorsRu"></div>
+            </section>
+
+            <!-- Motivation -->
+            <section id="motivation-ru">
+                <h2>Мотивация для волонтерства в FIA</h2>
+                <div class="motivation-box">
+                    <p>
+                        Волонтерство на мероприятиях FIA — это возможность стать частью международной спортивной инициативы и внести вклад в организацию мероприятий высокого уровня в Узбекистане. Я стремлюсь развивать навыки в спортивном менеджменте, командной работе и принятии решений в режиме реального времени, поддерживая глобальное автоспортивное сообщество.
+                    </p>
+                    <p style="margin-top: 20px;">
+                        Я дисциплинирован, мотивирован и готов работать в динамичной, быстро меняющейся среде.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Additional Info -->
+            <section id="additional-ru">
+                <h2>Дополнительная информация</h2>
+                <ul style="font-size: 1.1em; line-height: 2;">
+                    <li>✓ Доступен на протяжении всего расписания мероприятия</li>
+                    <li>✓ Открыт для любой волонтерской роли (логистика, регистрация, медиа, поддержка гостей, координация)</li>
+                    <li>✓ Сильный интерес к автоспорту и организации спортивных мероприятий</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h3>Связаться со мной</h3>
+            <div class="social-links">
+                <!-- REPLACE # with your actual social media links -->
+                <a href="si613741@gmail.com">📧 Email</a>
+                <a href="https://www.instagram.com/said_isakovv/">📱 Instagram</a>
+                <a href="https://www.linkedin.com/in/said-isakov">💼 LinkedIn</a>
+                <a href="https://t.me/hesoyam211006">✈️ Telegram</a>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.7;">© 2025 Саидмухаммад Исоков | Портфолио волонтера FIA</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language Switcher Function
+        function switchLang(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected language
+            document.getElementById(lang).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Carousel for English version
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#carouselTrack .carousel-slide');
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateIndicators();
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function createIndicators() {
+            const container = document.getElementById('indicators');
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('span');
+                indicator.classList.add('indicator');
+                if (i === 0) indicator.classList.add('active');
+                indicator.onclick = () => {
+                    currentSlide = i;
+                    updateCarousel();
+                };
+                container.appendChild(indicator);
+            }
+        }
+
+        function updateIndicators() {
+            document.querySelectorAll('#indicators .indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        // Carousel for Russian version
+        let currentSlideRu = 0;
+        const slidesRu = document.querySelectorAll('#carouselTrackRu .carousel-slide');
+        const totalSlidesRu = slidesRu.length;
+
+        function updateCarouselRu() {
+            const track = document.getElementById('carouselTrackRu');
+            track.style.transform = `translateX(-${currentSlideRu * 100}%)`;
+            updateIndicatorsRu();
+        }
+
+        function moveCarouselRu(direction) {
+            currentSlideRu += direction;
+            if (currentSlideRu < 0) currentSlideRu = totalSlidesRu - 1;
+            if (currentSlideRu >= totalSlidesRu) currentSlideRu = 0;
+            updateCarouselRu();
+        }
+
+        function createIndicatorsRu() {
+            const container = document.getElementById('indicatorsRu');
+            for (let i = 0; i < totalSlidesRu; i++) {
+                const indicator = document.createElement('span');
+                indicator.classList.add('indicator');
+                if (i === 0) indicator.classList.add('active');
+                indicator.onclick = () => {
+                    currentSlideRu = i;
+                    updateCarouselRu();
+                };
+                container.appendChild(indicator);
+            }
+        }
+
+        function updateIndicatorsRu() {
+            document.querySelectorAll('#indicatorsRu .indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentSlideRu);
+            });
+        }
+
+        // Auto-play carousel (optional - remove if you don't want auto-play)
+        setInterval(() => {
+            const activeLang = document.querySelector('.lang-content.active').id;
+            if (activeLang === 'en') {
+                moveCarousel(1);
+            } else {
+                moveCarouselRu(1);
+            }
+        }, 5000); // Change slide every 5 seconds
+
+        // Initialize carousels on page load
+        window.onload = () => {
+            createIndicators();
+            createIndicatorsRu();
+        };
+    </script>
+</body>
+</html>
